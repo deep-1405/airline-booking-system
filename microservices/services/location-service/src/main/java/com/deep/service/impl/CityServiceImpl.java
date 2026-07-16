@@ -13,6 +13,7 @@ import org.springframework.stereotype.Service;
 import com.deep.repository.CityRepository;
 
 @Service
+// RequiredArgsConstructor generates a constructor for all final fields. Spring uses this to inject dependencies.
 @RequiredArgsConstructor
 public class CityServiceImpl implements CityService {
     private final CityRepository cityRepository;

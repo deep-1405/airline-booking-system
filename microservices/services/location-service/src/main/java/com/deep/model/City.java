@@ -3,7 +3,6 @@ package com.deep.model;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Size;
 import lombok.*;
-import org.hibernate.annotations.CollectionId;
 
 @Setter
 @Getter

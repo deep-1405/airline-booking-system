@@ -1,7 +1,6 @@
 package com.deep.repository;
 
 import com.deep.model.Airport;
-import com.deep.payload.response.AirportResponse;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.List;

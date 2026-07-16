@@ -26,14 +26,15 @@ public class AirportRequest {
     @NotBlank(message = "Airport name is mandatory")
     private String name;
 
-    private ZoneId timeZone;
-
     @Valid
     private Address address;
+
+    @Valid
+    private GeoCode geoCode;
+
+    private ZoneId timeZone;
 
     @NotNull(message = "City ID is mandatory")
     private Long cityId;
 
-    @Valid
-    private GeoCode geoCode;
 }

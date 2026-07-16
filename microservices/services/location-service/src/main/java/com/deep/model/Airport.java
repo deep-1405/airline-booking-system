@@ -35,6 +35,9 @@ public class Airport {
 
     @ManyToOne
     @JsonIgnore
+    // JsonIgnore prevents the jackson library from looking at the city field inside the airport entity class only
+    // to prevent the app from crashing if the entity is ever used directly in a JSON context
+    // e.g. if city is dependent on the airport also than it will crash because of the situation like: Airport->City->Airport->City->Airport
     private City city;
 
     @JsonIgnore

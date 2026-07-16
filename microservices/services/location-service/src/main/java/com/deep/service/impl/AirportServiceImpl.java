@@ -24,7 +24,7 @@ public class AirportServiceImpl implements AirportService {
     @Override
     public AirportResponse createAirport(AirportRequest request) throws Exception {
         if(airportRepository.findByIataCode(request.getIataCode()).isPresent()) {
-            throw new Exception("Airport with Iata code" + request.getIataCode() + "already exists");
+            throw new Exception("Airport with Iata code " + request.getIataCode() + " already exists");
         }
 
         City city = cityRepository.findById(request.getCityId())
@@ -59,7 +59,7 @@ public class AirportServiceImpl implements AirportService {
         // check for edge case if there is an airport existing with the corresponding id or not
         Airport existingAirport = airportRepository.findById(id).orElseThrow(
                 // throwing exception upon not finding an airport with an ID
-                () -> new Exception("airport not exist with id" + id)
+                () -> new Exception("airport not exist with id " + id)
         );
         // if the request is emtpy or
         // existing airport is having same iata code as the request iata code or
@@ -88,7 +88,7 @@ public class AirportServiceImpl implements AirportService {
         // check for edge case if there is an airport existing with the corresponding id or not
         Airport airport = airportRepository.findById(id).orElseThrow(
                 // throwing exception upon not finding an airport with an ID
-                () -> new Exception("airport not exist with id" + id)
+                () -> new Exception("airport not exist with id " + id)
         );
 
         airportRepository.delete(airport);
