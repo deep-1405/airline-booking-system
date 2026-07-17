@@ -1,7 +1,7 @@
 package com.deep.mapper;
 
 import com.deep.model.Airport;
-import com.deep.model.City;
+
 import com.deep.payload.request.AirportRequest;
 import com.deep.payload.response.AirportResponse;
 
