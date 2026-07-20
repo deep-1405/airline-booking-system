@@ -38,7 +38,7 @@ public class AirportMapper {
         if(request == null || existingAirport == null) return;
 
         if(request.getIataCode() != null) {
-            existingAirport.setName(request.getIataCode());
+            existingAirport.setIataCode(request.getIataCode());
         }
 
         if(request.getName() != null) {

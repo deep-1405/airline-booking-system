@@ -63,7 +63,7 @@ public class CityController {
     // ---------- DELETE ----------
     @DeleteMapping("/{id}")
     public ResponseEntity<ApiResponse> deleteCity(
-            @PathVariable long id
+            @PathVariable Long id
     ) throws Exception {
         cityService.deleteCity(id);
         return ResponseEntity.ok(new ApiResponse("City deleted successfully."));
