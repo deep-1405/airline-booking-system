@@ -6,7 +6,6 @@ import com.deep.model.Airline;
 import com.deep.payload.request.AirlineRequest;
 import com.deep.payload.response.AirlineDropdownItem;
 import com.deep.payload.response.AirlineResponse;
-import com.deep.payload.response.AirportResponse;
 import com.deep.repository.AirlineRepository;
 import com.deep.service.AirlineService;
 import jakarta.persistence.EntityNotFoundException;
@@ -15,8 +14,9 @@ import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Service;
 
 import org.springframework.data.domain.Pageable;
+
+import java.time.Instant;
 import java.util.List;
-import java.util.Optional;
 import java.util.stream.Collectors;
 
 @Service
@@ -29,6 +29,7 @@ public class AirlineServiceImpl implements AirlineService {
     @Override
     public AirlineResponse createAirline(AirlineRequest request, Long ownerId) {
         Airline airline = AirlineMapper.toEntity(request, ownerId);
+        airline.setCreatedAt(Instant.now());
 //        Airline saved = airlineRepository.save(airline);
         return AirlineMapper.toResponse(airlineRepository.save(airline));
     }

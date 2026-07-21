@@ -1,11 +1,9 @@
 package com.deep.controller;
 
 import com.deep.enums.AirlineStatus;
-import com.deep.model.Airline;
 import com.deep.payload.request.AirlineRequest;
 import com.deep.payload.response.AirlineDropdownItem;
 import com.deep.payload.response.AirlineResponse;
-import com.deep.payload.response.AirportResponse;
 import com.deep.payload.response.ApiResponse;
 import com.deep.service.AirlineService;
 import jakarta.validation.Valid;

@@ -50,7 +50,7 @@ public class AircraftServiceImpl implements AircraftService {
     }
 
     @Override
-    public List<AircraftResponse> listAllAircraftsByOwner(Long ownerId) {
+    public List<AircraftResponse> listAllAircraftByOwner(Long ownerId) {
         Airline airline = airlineRepository.
                 findByOwnerId(ownerId).
                 orElseThrow(

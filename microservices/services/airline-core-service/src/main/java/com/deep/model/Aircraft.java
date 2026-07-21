@@ -25,6 +25,7 @@ import java.time.LocalDate;
 @AllArgsConstructor
 @Builder
 @Entity
+// by enabling this only updating and creating timestamp will be populated on their own by the JPA
 @EntityListeners(AuditingEntityListener.class)
 public class Aircraft {
     @Id

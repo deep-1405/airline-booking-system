@@ -9,7 +9,7 @@ public interface AircraftService {
 
     AircraftResponse createAircraft(AircraftRequest request, Long ownerId);
     AircraftResponse getAircraftById(Long id);
-    List<AircraftResponse> listAllAircraftsByOwner(Long ownerId);
+    List<AircraftResponse> listAllAircraftByOwner(Long ownerId);
     AircraftResponse updateAircraft(Long id, AircraftRequest request, Long ownerId);
     void deleteAircraft(Long id);
 }
