@@ -13,6 +13,10 @@
 	<description>Manages airlines, aircraft fleet, aircraft models, and operational inventory for the airline system.</description>
 	<dependencies>
 		<dependency>
+			<groupId>org.springframework.cloud</groupId>
+			<artifactId>spring-cloud-starter-netflix-eureka-client</artifactId>
+		</dependency>
+		<dependency>
 			<groupId>com.deep</groupId>
 			<artifactId>common-lib</artifactId>
 			<version>${project.version}</version>

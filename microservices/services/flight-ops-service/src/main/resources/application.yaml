@@ -2,6 +2,15 @@ server:
   port: 5005
 
 spring:
+  cloud:
+    discovery:
+      client:
+        simple:
+          instances:
+            airline-core-service:
+              - uri: http://localhost:5002
+            location-service:
+              - uri: http://localhost:5004
   application:
     name: flight-ops-service
 
@@ -12,3 +21,10 @@ spring:
   jpa:
     hibernate:
       ddl-auto: update
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8761/eureka/
+  instance:
+    prefer-ip-address: true

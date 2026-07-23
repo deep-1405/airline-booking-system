@@ -7,9 +7,10 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="airline-core-service" />
         <module name="common-lib" />
         <module name="user-service" />
+        <module name="airline-core-service" />
+        <module name="service-registry" />
       </profile>
       <profile name="Annotation profile for Airline System" enabled="true">
         <sourceOutputDir name="target/generated-sources/annotations" />
@@ -29,6 +30,7 @@
       <module name="common-lib" options="-parameters" />
       <module name="flight-ops-service" options="-parameters" />
       <module name="location-service" options="-parameters" />
+      <module name="service-registry" options="-parameters" />
       <module name="user-service" options="-parameters" />
     </option>
   </component>
