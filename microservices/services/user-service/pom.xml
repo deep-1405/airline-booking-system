@@ -79,6 +79,21 @@
 			<scope>runtime</scope>
 		</dependency>
 
+		<!--
+            ========== SPRING CLOUD ==========
+            These connect this service to the cloud infrastructure (Config + Eureka).
+        -->
+
+		<!--
+            Eureka Client: Registers this service with Eureka Server.
+            Other services (like API Gateway) can then discover user-service
+            by name instead of hardcoding IP:port.
+        -->
+		<dependency>
+			<groupId>org.springframework.cloud</groupId>
+			<artifactId>spring-cloud-starter-netflix-eureka-client</artifactId>
+		</dependency>
+
 	</dependencies>
 
 	<build>
