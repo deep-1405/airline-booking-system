@@ -61,7 +61,7 @@ public class Airline {
     private Long headquartersCityId;
 
     // Cross-service reference: stored as ID (User lives in user-service)
-    @Column(name = "owner_id", updatable = false, nullable = false)
+    @Column(name = "owner_id", updatable = false, nullable = false, unique = true)
     private Long ownerId;
 
     @Column(name = "updated_by_user_id")
