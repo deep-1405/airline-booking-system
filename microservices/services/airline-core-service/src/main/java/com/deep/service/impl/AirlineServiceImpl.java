@@ -36,7 +36,7 @@ public class AirlineServiceImpl implements AirlineService {
 
     @Override
     public AirlineResponse getAirlineByOwner(Long ownerId) {
-        Airline airline = airlineRepository.findByOwnerId(ownerId)
+        Airline airline = (Airline) airlineRepository.findFirstByOwnerId(ownerId)
                 .orElseThrow(() -> new EntityNotFoundException("Airline not found for owner: " + ownerId));
         return AirlineMapper.toResponse(airline);
     }
@@ -56,7 +56,7 @@ public class AirlineServiceImpl implements AirlineService {
 
     @Override
     public AirlineResponse updateAirline(AirlineRequest request, Long ownerId) {
-        Airline airline = airlineRepository.findByOwnerId(ownerId)
+        Airline airline = (Airline) airlineRepository.findFirstByOwnerId(ownerId)
                 .orElseThrow(() -> new EntityNotFoundException("Airline not found for owner: " + ownerId));
 
         AirlineMapper.updateEntity(airline, request);
@@ -65,7 +65,7 @@ public class AirlineServiceImpl implements AirlineService {
 
     @Override
     public void deleteAirline(Long id, Long ownerId) {
-        Airline airline = airlineRepository.findByOwnerId(ownerId)
+        Airline airline = (Airline) airlineRepository.findFirstByOwnerId(ownerId)
                 .orElseThrow(() -> new EntityNotFoundException("Airline not found for owner: " + ownerId));
         airlineRepository.delete(airline);
     }

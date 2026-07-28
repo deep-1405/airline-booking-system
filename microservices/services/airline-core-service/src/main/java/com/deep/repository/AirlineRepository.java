@@ -12,7 +12,7 @@ import java.util.Optional;
 
 public interface AirlineRepository extends JpaRepository<Airline, Long> {
 
-    Optional<Airline> findByOwnerId(Long ownerId);
+    Optional<Airline> findFirstByOwnerId(Long ownerId);
 
     Optional<Airline> findByIataCode(String code);
 
@@ -40,4 +40,5 @@ public interface AirlineRepository extends JpaRepository<Airline, Long> {
 
     /** Used for flight search: find all airlines belonging to a given alliance. */
     List<Airline> findAllByAllianceIgnoreCase(String alliance);
+
 }

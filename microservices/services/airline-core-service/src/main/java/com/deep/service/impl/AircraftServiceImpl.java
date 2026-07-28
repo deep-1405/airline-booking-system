@@ -25,8 +25,8 @@ public class AircraftServiceImpl implements AircraftService {
 
     @Override
     public AircraftResponse createAircraft(AircraftRequest request, Long ownerId) {
-        Airline airline = airlineRepository
-                .findByOwnerId(ownerId)
+        Airline airline = (Airline) airlineRepository
+                .findFirstByOwnerId(ownerId)
                 .orElseThrow(
                         () -> new EntityNotFoundException("Airline not found for owner: " + ownerId)
                 );
@@ -52,7 +52,7 @@ public class AircraftServiceImpl implements AircraftService {
     @Override
     public List<AircraftResponse> listAllAircraftByOwner(Long ownerId) {
         Airline airline = airlineRepository.
-                findByOwnerId(ownerId).
+                findFirstByOwnerId(ownerId).
                 orElseThrow(
                         () -> new EntityNotFoundException("Airline with " + ownerId + " Owner Id not found")
                 );
@@ -66,7 +66,7 @@ public class AircraftServiceImpl implements AircraftService {
     @Override
     public AircraftResponse updateAircraft(Long id, AircraftRequest request, Long ownerId) {
         Airline airline = airlineRepository.
-                findByOwnerId(ownerId).
+                findFirstByOwnerId(ownerId).
                 orElseThrow(
                         () -> new EntityNotFoundException("Airline with " + ownerId + " Owner Id not found")
                 );
