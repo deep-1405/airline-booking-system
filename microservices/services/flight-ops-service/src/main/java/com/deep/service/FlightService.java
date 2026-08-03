@@ -15,10 +15,7 @@ public interface FlightService {
     List<FlightResponse> createFlights(Long userId, List<FlightRequest> requests);
     FlightResponse getFlightById(Long id);
     FlightResponse getFlightByNumber(String flightNumber);
-    Page<FlightResponse> getFlightsByAirline(Long userId,
-                                             Long departureAirportId,
-                                             Long arrivalAirportId,
-                                             Pageable pageable);
+    Page<FlightResponse> getFlightsByAirline(Long userId, Long departureAirportId, Long arrivalAirportId, Pageable pageable);
     FlightResponse updateFlight(Long id, FlightRequest request);
     FlightResponse changeStatus(Long id, FlightStatus status);
     void deleteFlight(Long id);

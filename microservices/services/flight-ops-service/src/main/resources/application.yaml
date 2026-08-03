@@ -22,6 +22,10 @@ spring:
     hibernate:
       ddl-auto: update
 
+feign:
+  circuitbreaker:
+    enabled: true
+
 eureka:
   client:
     service-url:
