@@ -72,6 +72,7 @@ public class FlightInstance {
     private String gate;
 
     @Version
+    // Don't lock the row. Let everyone try. Before saving, check if someone else already changed it.
     private Long version;
 
     @Transient

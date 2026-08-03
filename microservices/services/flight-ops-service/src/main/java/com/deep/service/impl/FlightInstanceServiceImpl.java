@@ -2,10 +2,8 @@ package com.deep.service.impl;
 
 import com.deep.client.AirlineClient;
 import com.deep.client.LocationClient;
-//import com.deep.event.FlightInstanceCreatedEvent;
-//import com.deep.event.FlightInstanceEventProducer;
+import com.deep.exception.ResourceNotFoundException;
 import com.deep.mapper.FlightInstanceMapper;
-import com.deep.mapper.FlightMapper;
 import com.deep.model.Flight;
 import com.deep.model.FlightInstance;
 import com.deep.payload.request.FlightInstanceRequest;
@@ -20,7 +18,6 @@ import feign.FeignException;
 import jakarta.persistence.EntityNotFoundException;
 import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
-import org.apache.kafka.common.errors.ResourceNotFoundException;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
@@ -50,7 +47,7 @@ public class FlightInstanceServiceImpl implements FlightInstanceService {
 
         Long airlineId = getAirlineForUser(userId);
 
-        Flight flight = flightRepository.findById(airlineId).orElseThrow(
+        Flight flight = flightRepository.findById(flightInstanceRequest.getFlightId()).orElseThrow(
                 () -> new ResourceNotFoundException("Flight not found")
         );
 
@@ -58,6 +55,11 @@ public class FlightInstanceServiceImpl implements FlightInstanceService {
 
         FlightInstance flightInstance = FlightInstanceMapper.toEntity(flightInstanceRequest, flight);
 
+        // we do some of the field population outside the mapper, because all the mapper does is converting the DTOs
+        // things that are not supposed to be involved in the DTO we need to populate it into outside the mapper
+
+        // e.g. we need to populate the flight instance with the airline id, and we do not expect the user sen the airlineId in the request
+        // so we do the population over here
         flightInstance.setAirlineId(airlineId);
         flightInstance.setFlight(flight);
         flightInstance.setDepartureAirportId(flightInstanceRequest.getDepartureAirportId());

@@ -16,8 +16,9 @@ import java.util.Collection;
 import java.util.List;
 import java.util.Optional;
 
-public interface FlightInstanceRepository extends JpaRepository<
-        FlightInstance, Long>,
+public interface FlightInstanceRepository
+        extends
+        JpaRepository<FlightInstance, Long>,
         JpaSpecificationExecutor<FlightInstance> {
 
 
@@ -55,6 +56,8 @@ public interface FlightInstanceRepository extends JpaRepository<
             Pageable pageable);
 
     @Lock(LockModeType.PESSIMISTIC_WRITE)
+    // Lock the row immediately so nobody else can modify it.
+    // Lock first, work later.
     @Query("SELECT fi FROM FlightInstance fi WHERE fi.id = :id")
     Optional<FlightInstance> findByIdForUpdate(@Param("id") Long id);
 
